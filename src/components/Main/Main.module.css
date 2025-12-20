@@ -1,0 +1,9 @@
+.main {
+    width: 100vw;
+    background-color: violet;
+    height: 74vh;
+    /* max-height: 100vh; */
+}
+.main h1 {
+    margin: 0;
+}

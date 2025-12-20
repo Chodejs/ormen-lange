@@ -1,0 +1,10 @@
+.nav {
+    background-color: #333;
+    padding: 6px;
+}
+
+.navList {
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+}
