@@ -1,10 +1,10 @@
 import styles from './Main.module.css';
 
-export default function Main() {
-
+// Now accepts 'children', which will be our Route content
+export default function Main({ children }) {
     return (
         <main className={styles.main}>
-            <h1>Main</h1>
+            {children}
         </main>
     )
 }

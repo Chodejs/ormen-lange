@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'; // <--- The magic import
 import { devLog } from '../../Cfunc/app';
 import styles from './Nav.module.css';
 
@@ -16,9 +17,14 @@ export default function Nav() {
             <ul className={styles.navList}>
                 {links.map(link => (
                     <li key={link.id} className={styles.navItem}>
-                        <a href={link.path} className={styles.navLink}>
+                        <NavLink 
+                            to={link.path} 
+                            className={({ isActive }) => 
+                                isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
+                            }
+                        >
                             {link.title}
-                        </a>
+                        </NavLink>
                     </li>
                 ))}
             </ul>

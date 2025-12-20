@@ -1,10 +1,21 @@
 .nav {
-    background-color: #333;
-    padding: 6px;
+    background-color: var(--clr-surface);
+    border-bottom: 1px solid var(--clr-border);
+    padding: var(--space-sm) 0;
 }
 
 .navList {
-    list-style: none;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: var(--space-lg);
+}
+
+.navLink {
+    color: var(--clr-text-muted);
+    font-weight: 600;
+}
+
+.navLink:hover {
+    color: var(--clr-primary);
+    text-decoration: none;
 }

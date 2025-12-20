@@ -1,0 +1,61 @@
+/* src/index.css */
+
+:root {
+  /* --- The Palette --- */
+  /* Easy to swap out for each new project */
+  
+  /* Primary Brand Color (A strong Royal Blue) */
+  --clr-primary: #2563eb;
+  --clr-primary-hover: #1d4ed8;
+
+  /* Accent Color (A cheeky bit of Amber for buttons/highlights) */
+  --clr-accent: #f59e0b;
+
+  /* Neutral/Structure Colors */
+  --clr-bg-body: #f8fafc;    /* Very light grey/blue for main background */
+  --clr-surface: #ffffff;    /* Pure whiteZXs for cards/headers */
+  --clr-text-main: #0f172a;  /* Dark slate for text (never use pure black, darling) */
+  --clr-text-muted: #64748b; /* Softer text for footers */
+  --clr-border: #e2e8f0;     /* Subtle borders */
+
+  /* --- Spacing System --- */
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+
+  /* --- Global Defaults --- */
+  --header-height: 70px;
+  --footer-height: 60px;
+}
+
+/* A Proper CSS Reset (The "modern-normalize" approach) */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--clr-bg-body);
+  color: var(--clr-text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--clr-primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--clr-primary-hover);
+  text-decoration: underline;
+}
+
+ul {
+  list-style: none;
+}

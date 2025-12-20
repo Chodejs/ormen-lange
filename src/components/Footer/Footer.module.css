@@ -1,13 +1,19 @@
 .footer {
-    background-color: bisque;
-    width: 100vw;
-    height: 10vh;
+    background-color: var(--clr-text-main); /* Dark footer looks professional */
+    color: var(--clr-surface); /* White text */
+    width: 100%;
+    height: auto;
+    min-height: var(--footer-height);
     display: flex;
-    justify-content: space-between;
+    flex-direction: column; /* Stack on mobile usually */
+    justify-content: center;
     align-items: center;
-    padding: 0 2rem;
+    padding: var(--space-md) var(--space-lg);
+    text-align: center;
 }
 
 .footer p {
-    margin: 0;
+    margin: 0.2rem 0;
+    font-size: 0.9rem;
+    color: #94a3b8; /* Manually lighter grey for footer text */
 }
