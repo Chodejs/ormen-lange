@@ -1,4 +1,5 @@
-// This reads the variable we defined in your .env file
+// src/services/api.js
+
 const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 /**
@@ -30,17 +31,22 @@ export const apiClient = {
 
 /* Internal helper function */
 async function customFetch(endpoint, options) {
-    // Ensure we don't end up with double slashes //
+    // 1. DEFINE THE URL (This was missing!)
     const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
     const url = `${BASE_URL}${cleanEndpoint}`;
 
-    const defaultHeaders = {
-        'Content-Type': 'application/json',
-        // Add Authorization headers here later if you need them:
-        // 'Authorization': `Bearer ${token}` 
-    };
+    console.log("🚀 API Request starting...");
+    console.log("🎯 Target URL:", url);
 
-    const config =VF = {
+    // 2. DEFINE HEADERS (The "Smart" way that doesn't anger CORS)
+    const defaultHeaders = {};
+    
+    // Only add JSON header if we are NOT doing a GET request
+    if (options.method && options.method !== 'GET') {
+        defaultHeaders['Content-Type'] = 'application/json';
+    }
+
+    const config = {
         ...options,
         headers: {
             ...defaultHeaders,
@@ -49,19 +55,20 @@ async function customFetch(endpoint, options) {
     };
 
     try {
+        // 3. FETCH
         const response = await fetch(url, config);
         
-        // Handle 404/500 errors which fetch doesn't catch by default
+        // Handle 404/500 errors
         if (!response.ok) {
             throw new Error(`API Error: ${response.status} ${response.statusText}`);
         }
 
-        // Return empty object for 204 No Content, otherwise JSON
+        // Return empty object for 204 No Content
         if (response.status === 204) return {};
         
         return await response.json();
     } catch (error) {
         console.error('API Request Failed:', error);
-        throw error; // Re-throw so the hook can catch it
+        throw error;
     }
 }

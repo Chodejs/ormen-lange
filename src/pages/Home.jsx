@@ -3,7 +3,7 @@ import { useFetch } from '../hooks/useFetch';
 export default function Home() {
     // Example: Fetching a list of users
     // If your .env API_URL is fake, this will show the error message.
-    const { data, loading, error, refetch } = useFetch('/users'); 
+    const { data, loading, error, refetch } = useFetch('/breeds/image/random'); 
 
     return (
         <section>
