@@ -7,7 +7,7 @@ import { apiClient } from '../services/api';
  * @param {boolean} immediate - If true, fetch runs on mount. If false, wait for manual trigger.
  */
 export function useFetch(endpoint, immediate = true) {
-    const [data,XH] = useState(null);
+    const [data, setData] = useState(null);
     const [loading, setLoading] = useState(immediate); // Start true if immediate
     const [error, setError] = useState(null);
 
