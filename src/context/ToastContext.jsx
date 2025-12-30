@@ -1,5 +1,4 @@
 import { useState, createContext, useContext, useCallback, useEffect } from 'react';
-import './Toast.css'; // Don't forget to create this file next!
 
 // --------------------------------------------------------------------------
 // PART 1: THE CONTEXT & HOOK
@@ -44,26 +43,41 @@ export function ToastProvider({ children }) {
 // --------------------------------------------------------------------------
 function ToastContainer({ toasts, removeToast }) {
   return (
-    <div className="toast-container">
+    // fixed top-5 right-5 z-[9999] flex flex-col gap-3
+    <div className="fixed top-5 right-5 z-9999 flex flex-col gap-3 pointer-events-none">
       {toasts.map((toast) => (
-        <ToastItem key={crypto.randomUUID()} {...toast} removeToast={removeToast} />
+        <ToastItem key={toast.id} {...toast} removeToast={removeToast} />
       ))}
     </div>
   );
 }
 
 function ToastItem({ id, message, type, duration, removeToast }) {
-  // Auto-dismiss logic
+  // Auto-dismiss logic remains the same
   useEffect(() => {
     const timer = setTimeout(() => {
       removeToast(id);
     }, duration);
-
     return () => clearTimeout(timer);
   }, [id, duration, removeToast]);
 
+  // Map "type" to Tailwind colors
+  const typeStyles = {
+    info: 'bg-blue-500',
+    success: 'bg-green-500',
+    error: 'bg-red-500',
+    warning: 'bg-amber-500',
+  };
+
   return (
-    <div className={`toast toast-${type}`} onClick={() => removeToast(id)}>
+    <div
+      onClick={() => removeToast(id)}
+      className={`
+        ${typeStyles[type] || 'bg-gray-500'} 
+        text-white px-5 py-3 rounded-lg shadow-lg cursor-pointer pointer-events-auto
+        min-w-62.5 font-sans animate-in slide-in-from-right fade-in duration-300
+      `}
+    >
       {message}
     </div>
   );
