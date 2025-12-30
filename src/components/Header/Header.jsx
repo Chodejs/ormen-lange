@@ -1,15 +1,18 @@
 import { devLog, toggleHighlight } from "../../Cfunc/app";
-import styles from './Header.module.css';
 
 export default function Header() {
 
-    const headerLoaded = "Header Component Mounted";
-    devLog(headerLoaded);
-    
-
     return (
-        <header className={styles.header}>
-            <h2 className={styles.headerTitle}>Welcome to Ormen Lange</h2>
+        <header
+            className="flex w-full justify-between items-center sticky top-0 z-10 
+                   bg-surface border-b border-border shadow-sm 
+                   h-header px-lg"
+        >
+            <h2
+             className="text-primary text-2xl font-bold font-inherit m-0"
+             >
+                Welcome to Ormen Lange
+            </h2>
         </header>
-    )
-}
+    );
+};

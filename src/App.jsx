@@ -14,7 +14,7 @@ import './App.css';
 
 function App() {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Header />
       <Nav />
       {/* The Main wrapper handles the layout constraints */}
@@ -27,7 +27,7 @@ function App() {
         </Routes>
       </Main>
       <Footer />
-    </>
+    </div>
   )
 }
 
